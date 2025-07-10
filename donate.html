@@ -33,6 +33,7 @@
       max-width: 1200px;
       margin: auto;
       padding: 0 1rem;
+      position: relative;
     }
 
     .logo img {
@@ -56,6 +57,35 @@
 
     nav ul li a:hover {
       background: #555;
+    }
+
+    /* Hamburger styles */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      cursor: pointer;
+      width: 30px;
+      height: 25px;
+      gap: 5px;
+    }
+
+    .hamburger div {
+      background-color: white;
+      height: 3px;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* When active, animate hamburger bars */
+    .hamburger.active div:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.active div:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active div:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
     }
 
     main {
@@ -162,13 +192,21 @@
 
     @media (max-width: 768px) {
       .nav-container {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .hamburger {
+        display: flex;
       }
 
       nav ul {
         flex-direction: column;
         width: 100%;
+        display: none;
+      }
+
+      nav ul.show {
+        display: flex;
       }
 
       nav ul li a {
@@ -210,9 +248,16 @@
     <nav>
       <div class="nav-container">
         <a href="index.html" class="logo">
-          <img src="images/logo.jpg" alt="Amari Amman Foundation Logo">
+          <img src="images/logo.jpg" alt="Amari Amman Foundation Logo" />
         </a>
-        <ul>
+
+        <div class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" role="button" tabindex="0">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+
+        <ul id="nav-links">
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="gallery.html">Gallery</a></li>
@@ -227,7 +272,7 @@
   <main>
     <div class="hero-text">Together We Build Hope and Restore Dignity</div>
     <img src="images/poor-house.jpg" alt="Helping Hands" class="hero-image" />
-    
+
     <div class="intro-text">
       <p>
         Every donation to Amari Amman Foundation helps us reach children, families, and entire communities with life changing support. Your generosity fuels our outreach in education, medical aid, food security, and women’s empowerment. Whether you're giving once or monthly, you're becoming part of a movement that believes in restoring dignity and building hope. No amount is too small, your help means health, education, and relief for those who need it most. Let’s create a future where every life counts.
@@ -310,5 +355,24 @@
     <p>&copy; 2025 Amari Amman Foundation | All rights reserved.</p>
   </footer>
 
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+      hamburger.classList.toggle('active');
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true' || false;
+      hamburger.setAttribute('aria-expanded', !expanded);
+    });
+
+    // Optional: enable keyboard toggling with Enter or Space key
+    hamburger.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        hamburger.click();
+      }
+    });
+  </script>
 </body>
 </html>

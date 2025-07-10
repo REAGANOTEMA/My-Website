@@ -42,6 +42,7 @@
       font-weight:600;
       font-size:1rem;
       flex-wrap:wrap;
+      transition: max-height 0.3s ease;
     }
     nav ul li a {
       padding:12px 18px;
@@ -217,6 +218,59 @@
         align-items:center;
         margin-top:10px;
         gap:0.5rem;
+        max-height: 0;
+        overflow: hidden;
+      }
+      nav ul.show {
+        max-height: 500px; /* enough height to show all menu items */
+      }
+      /* Hamburger menu button */
+      .hamburger {
+        display: block;
+        cursor: pointer;
+        width: 30px;
+        height: 25px;
+        position: relative;
+        z-index: 20;
+        -webkit-user-select:none;
+        -moz-user-select:none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+      .hamburger div {
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        background: #f0f0f0;
+        border-radius: 2px;
+        opacity: 1;
+        left: 0;
+        transition: all 0.25s ease-in-out;
+      }
+      .hamburger div:nth-child(1) {
+        top: 0;
+      }
+      .hamburger div:nth-child(2) {
+        top: 11px;
+      }
+      .hamburger div:nth-child(3) {
+        top: 22px;
+      }
+      .hamburger.active div:nth-child(1) {
+        top: 11px;
+        transform: rotate(45deg);
+      }
+      .hamburger.active div:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.active div:nth-child(3) {
+        top: 11px;
+        transform: rotate(-45deg);
+      }
+    }
+    @media (min-width:769px) {
+      .hamburger {
+        display: none;
       }
     }
     @media (max-width:480px) {
@@ -244,7 +298,15 @@
       <a href="index.html" class="logo">
         <img src="images/logo.jpg" alt="Amari Amman Foundation Logo" />
       </a>
-      <ul>
+
+      <!-- Hamburger menu button -->
+      <div class="hamburger" id="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+
+      <ul id="nav-menu">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="gallery.html">Gallery</a></li>
@@ -274,7 +336,7 @@
   </div>
 
   <div class="gallery">
-    <!-- Gallery Item 1 -->
+    <!-- Gallery Items here (unchanged) -->
     <div class="gallery-item">
       <div class="image-container">
         <img src="images/prison-outreach.jpg" alt="Prison Outreach" />
@@ -288,7 +350,7 @@
         <span>Donate</span>
       </a>
     </div>
-    <!-- Gallery Item 2 -->
+    <!-- Other gallery items unchanged -->
     <div class="gallery-item">
       <div class="image-container">
         <img src="images/house_building_project_2022_p6.jpg" alt="House Building" />
@@ -302,7 +364,6 @@
         <span>Donate</span>
       </a>
     </div>
-    <!-- Gallery Item 3 -->
     <div class="gallery-item">
       <div class="image-container">
         <img src="images/soap-giving.jpg" alt="Soap Distribution" />
@@ -316,7 +377,6 @@
         <span>Donate</span>
       </a>
     </div>
-    <!-- Gallery Item 4 -->
     <div class="gallery-item">
       <div class="image-container">
         <img src="images/school-fees.jpeg" alt="School Fees Assistance" />
@@ -330,7 +390,6 @@
         <span>Donate</span>
       </a>
     </div>
-    <!-- Gallery Item 5 -->
     <div class="gallery-item">
       <div class="image-container">
         <img src="images/dirty_drink.jpeg" alt="Drilling Clean Water Wells" />
@@ -344,7 +403,6 @@
         <span>Donate</span>
       </a>
     </div>
-    <!-- Gallery Item 6 -->
     <div class="gallery-item">
       <div class="image-container">
         <img src="images/building-house.jpg" alt="Elderly Housing Rebuild" />
@@ -380,15 +438,4 @@
     idx = (idx+1) % colors.length;
   }, 5000);
 
-  document.querySelectorAll('.donate-icon').forEach(img => {
-    img.addEventListener('click', () => {
-      img.classList.add('swell');
-      img.addEventListener('animationend', () => {
-        img.classList.remove('swell');
-      }, { once: true });
-    });
-  });
-</script>
-
-</body>
-</html>
+  document.querySelectorAll
