@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Donate | Amari Amman Foundation</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header, footer {
+      text-align: center;
+    }
+
+    nav {
+      background: #333;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 1rem;
+    }
+
+    .logo img {
+      height: 60px;
+      width: auto;
+      padding: 8px 0;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 10px;
+    }
+
+    nav ul li a {
+      display: block;
+      padding: 15px 20px;
+      color: white;
+      text-decoration: none;
+    }
+
+    nav ul li a:hover {
+      background: #555;
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .hero-text {
+      font-size: 2.8rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      animation: colorChange 25s infinite;
+      transition: all 0.5s ease;
+    }
+
+    @keyframes colorChange {
+      0%   { color: #e63946; }
+      20%  { color: #2a9d8f; }
+      40%  { color: #f4a261; }
+      60%  { color: #264653; }
+      80%  { color: #1d3557; }
+      100% { color: #e63946; }
+    }
+
+    .hero-image {
+      width: 100%;
+      max-height: 450px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+    }
+
+    .intro-text {
+      text-align: center;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      max-width: 850px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .donate-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .donate-item {
+      background: white;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .donate-item img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .donate-item p {
+      font-size: 0.98rem;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+
+    .donate-button {
+      background: #007b5e;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.2rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .donate-button:hover {
+      background: #005f48;
+    }
+
+    .donate-button img {
+      width: 18px;
+      height: 18px;
+    }
+
+    footer {
+      background: #333;
+      color: white;
+      padding: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      nav ul li a {
+        width: 100%;
+        padding: 12px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="nav-container">
+        <a href="index.html" class="logo">
+          <img src="images/logo.jpg" alt="Amari Amman Foundation Logo">
+        </a>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero-text">Together We Build Hope and Restore Dignity</div>
+    <img src="images/poor-house.jpg" alt="Helping Hands" class="hero-image" />
+    
+    <div class="intro-text">
+      <p>
+        Every donation to Amari Amman Foundation helps us reach children, families, and entire communities with life changing support. Your generosity fuels our outreach in education, medical aid, food security, and women’s empowerment. Whether you're giving once or monthly, you're becoming part of a movement that believes in restoring dignity and building hope. No amount is too small, your help means health, education, and relief for those who need it most. Let’s create a future where every life counts.
+      </p>
+    </div>
+
+    <div class="donate-grid">
+
+      <div class="donate-item">
+        <img src="images/school-poverty.jpg" alt="Support Education" />
+        <p>
+          Sponsor school fees and learning supplies for a child who dreams of a brighter future. Education changes lives and breaks the cycle of poverty.
+        </p>
+        <button class="donate-button">
+          <img src="images/donate.jpeg" alt="Donate Icon" />
+          Donate
+        </button>
+      </div>
+
+      <div class="donate-item">
+        <img src="images/food-hands.jpg" alt="Food Donation" />
+        <p>
+          Help provide food packages for families in crisis. A donation of $20 feeds a household for a full week with essentials and nutrition.
+        </p>
+        <button class="donate-button">
+          <img src="images/donate.jpeg" alt="Donate Icon" />
+          Donate
+        </button>
+      </div>
+
+      <div class="donate-item">
+        <img src="images/eye" alt="Medical Aid" />
+        <p>
+          Contribute to our medical outreach efforts, including eye camps, medicine, and health screenings for those with no access to care.
+        </p>
+        <button class="donate-button">
+          <img src="images/donate.jpeg" alt="Donate Icon" />
+          Donate
+        </button>
+      </div>
+
+      <div class="donate-item">
+        <img src="images/currying-mad.jpg" alt="Women Empowerment" />
+        <p>
+          Support women with vocational training, hygiene kits, and self-help groups. Empowered women build stronger, healthier communities.
+        </p>
+        <button class="donate-button">
+          <img src="images/donate.jpeg" alt="Donate Icon" />
+          Donate
+        </button>
+      </div>
+
+      <div class="donate-item">
+        <img src="images/water-clean.jpeg" alt="Clean Water Access" />
+        <p>
+          Fund water filters, boreholes, and sanitation programs. Clean water saves lives and gives children a chance to grow up healthy.
+        </p>
+        <button class="donate-button">
+          <img src="images/donate.jpeg" alt="Donate Icon" />
+          Donate
+        </button>
+      </div>
+
+      <div class="donate-item">
+        <img src="images/mama-building.jpg" alt="Elder Housing Project" />
+        <p>
+          Help us build safe and dignified housing for elderly community members. Your donation provides shelter, comfort, and a sense of belonging.
+        </p>
+        <button class="donate-button">
+          <img src="images/donate.jpeg" alt="Donate Icon" />
+          Donate
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Contact: info@amariammanfoundation.org | Phone: +256 775 732 313</p>
+    <p>&copy; 2025 Amari Amman Foundation | All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

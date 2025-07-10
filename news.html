@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>News | Amari Amman Foundation</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    nav {
+      background-color: #333;
+      padding: 1rem;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      transition: background 0.3s;
+    }
+
+    nav ul li a:hover {
+      background-color: #555;
+      border-radius: 5px;
+    }
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      animation: heroZoom 20s infinite ease-in-out alternate;
+    }
+
+    @keyframes heroZoom {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.08); }
+    }
+
+    .hero-description {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(0, 0, 0, 0.65);
+      padding: 2rem;
+      color: white;
+      border-radius: 15px;
+      max-width: 800px;
+      text-align: center;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .hero-description h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: bold;
+      transition: color 1s ease;
+    }
+
+    .hero-description p {
+      font-size: 1.2rem;
+    }
+
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 3rem 1.5rem;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    article {
+      background: white;
+      padding: 1.5rem;
+      margin-bottom: 3rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    article:hover {
+      transform: scale(1.015) translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    article h3 {
+      font-size: 1.7rem;
+      margin-bottom: 0.5rem;
+      color: #222;
+    }
+
+    article img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      display: block;
+      margin: 1rem auto;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    article p {
+      font-size: 1rem;
+      color: #444;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 4rem;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-description h1 {
+        font-size: 2rem;
+      }
+      .hero-description p {
+        font-size: 1rem;
+      }
+      article img {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <nav>
+      <div class="nav-container">
+        <a href="index.html" class="logo">
+          <img src="images/logo.jpg" alt="Amari Amman Foundation Logo">
+        </a>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <img src="images/eyes.avif" alt="Free Medical Eye Camp" />
+    <div class="hero-description">
+      <h1 id="changingText">Latest News & Events</h1>
+      <p>Stay updated with our latest community outreach, charity initiatives, and inspiring transformation stories across Uganda.</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main>
+    <h2>Our Recent Work</h2>
+
+    <article>
+      <h3>Free Medical Eye Camp</h3>
+      <p><strong>Date:</strong> July 8, 2025</p>
+      <img src="images/eyees.png" alt="Eye Camp">
+      <p>
+        In partnership with dedicated volunteers and local medical professionals, Amari Amman Foundation launched a successful medical eye camp. Hundreds of residents, many of whom had never accessed eye care, received comprehensive screenings. Free prescription glasses, medication, and surgery referrals were distributed to restore sight and hope. For many, this was their first opportunity to see clearly again an incredible step toward independence, education, and dignity.
+      </p>
+    </article>
+
+    <article>
+      <h3>Bujowali Village Outreach</h3>
+      <p><strong>Date:</strong> March 10, 2025</p>
+      <img src="images/soapnkids.jpg" alt="Bujowali Outreach">
+      <p>
+        Our outreach in Bujowali Village brought smiles, support, and sustainability to over 150 families. We distributed essential supplies including food items, school kits, and hygiene materials. Special sessions with children helped raise awareness on cleanliness and well-being. We also identified families in need of ongoing support, creating a deeper connection and mapping future visits. This effort is part of our long term goal to empower rural communities through holistic care.
+      </p>
+    </article>
+
+    <article>
+      <h3>Love Starts With Listening</h3>
+      <p><strong>Date:</strong> May 13, 2025</p>
+      <img src="images/children-with-soap.jpg" alt="Listening Campaign">
+      <p>
+        Our latest awareness campaign centers on a powerful principle: transformation begins when we take time to listen. This initiative trains our volunteers in empathetic listening, encouraging them to understand stories before offering help. Whether serving children, the elderly, or the sick, our teams now approach each mission with hearts open and ears ready. Listening builds trust, and trust builds lasting impact, this campaign is changing the way we serve.
+      </p>
+    </article>
+
+    <article>
+      <h3>Hello!</h3>
+      <p><strong>Date:</strong> January 1, 2024</p>
+      <p>
+        This was more than a greeting, it was the birth of a movement. Our first post said “Hello” to a future of hope and compassion. Since then, we’ve journeyed into villages, cities, and hearts, building a foundation of love, healing, and restoration. From small beginnings, great things grow. Today, every project and every story traces back to that first brave step: introducing ourselves with honesty, vision, and heart.
+      </p>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>Contact: info@dignityfoundation.org | Phone: +256 775 732 313</p>
+    <p>&copy; 2025 Amari Amman Foundation. All rights reserved.</p>
+  </footer>
+
+  <!-- JS: Color-Changing Hero Text -->
+  <script>
+    const text = document.getElementById("changingText");
+    const colors = ["#FFD700", "#00CED1", "#FF69B4", "#90EE90", "#FFA07A"];
+    let i = 0;
+
+    setInterval(() => {
+      text.style.color = colors[i];
+      i = (i + 1) % colors.length;
+    }, 5000);
+  </script>
+
+</body>
+</html>

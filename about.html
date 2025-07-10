@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About | Amari Amman Foundation</title>
+  <style>
+    /* Reset and base styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    header {
+      background-color: #333;
+      padding: 0.5rem 1rem;
+      z-index: 100;
+      position: relative;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo img {
+      height: 55px;
+      width: auto;
+      border-radius: 5px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 0;
+    }
+
+    nav ul li a {
+      display: block;
+      padding: 10px 15px;
+      color: white;
+      text-decoration: none;
+      transition: background 0.3s;
+      font-weight: 600;
+    }
+
+    nav ul li a:hover,
+    nav ul li a[aria-current="page"] {
+      background: #555;
+      border-radius: 4px;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 2rem 1rem;
+      position: relative;
+      z-index: 10;
+      margin-top: 0;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #222;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Hero Container - full viewport height */
+    .hero-container {
+      position: relative;
+      width: 100%;
+      height: 100vh; /* full viewport height */
+      overflow: hidden;
+      user-select: none;
+      border-radius: 0;
+      z-index: 1;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0 20px;
+      text-align: center;
+      color: white;
+    }
+
+    /* Hero Image fills the hero container */
+    .hero-image {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      user-select: none;
+      pointer-events: none;
+      z-index: 1;
+      filter: brightness(0.7);
+    }
+
+    /* New: Hero Header */
+    .hero-header {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      z-index: 10;
+      position: relative;
+      transition: color 1s ease;
+    }
+
+    /* Hero Text Slider Container */
+    .hero-text-slider {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      color: white;
+      font-weight: 700;
+      text-shadow: 0 0 12px rgba(0,0,0,0.8);
+      user-select: none;
+      z-index: 10;
+      min-height: 100px;
+      overflow: hidden;
+      font-size: 2.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Individual slides */
+    .hero-slide {
+      position: absolute;
+      width: 100%;
+      opacity: 0;
+      transition: opacity 1s ease;
+      will-change: opacity;
+      padding: 0 1rem;
+    }
+
+    .hero-slide.active {
+      opacity: 1;
+      position: relative;
+    }
+
+    /* Donate Button */
+    .donate-btn {
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      width: 60px;
+      height: 60px;
+      z-index: 15;
+      transition: transform 0.3s ease, filter 0.3s ease;
+      filter: drop-shadow(0 0 5px rgba(0,0,0,0.4));
+    }
+
+    .donate-btn:hover {
+      transform: scale(1.1) translateY(-5px);
+      filter: drop-shadow(0 0 10px rgba(0,0,0,0.6));
+    }
+
+    .donate-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* Intro Text */
+    .intro-text {
+      text-align: center;
+      font-size: 1.1rem;
+      margin: 2rem auto;
+      max-width: 850px;
+      color: #444;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Team Section */
+    .team-section {
+      margin-top: 3rem;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      z-index: 10;
+    }
+
+    .team-section h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .team-member {
+      background: white;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      perspective: 800px;
+    }
+
+    .team-member:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+      z-index: 5;
+    }
+
+    .team-member img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+    }
+
+    .team-member:hover img {
+      transform: rotateY(10deg) rotateX(5deg) scale(1.05);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      background: #333;
+      color: white;
+      padding: 1.5rem;
+      margin-top: 3rem;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="nav-container">
+        <a href="index.html" class="logo" aria-label="Amari Amman Foundation Home">
+          <img src="images/logo.jpg" alt="Amari Amman Foundation Logo" />
+        </a>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" aria-current="page">About</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <h1>About Amari Amman Foundation</h1>
+
+    <div class="hero-container" aria-label="Hero image with foundation message and donate button">
+      <img src="images/children-n-mama-melisa.jpg" alt="Amari Amman Foundation Community" class="hero-image" />
+
+      <!-- Added header inside hero -->
+      <div class="hero-header" id="hero-header">
+        Empowering Communities
+      </div>
+
+      <div class="hero-text-slider" aria-live="polite" aria-atomic="true" aria-relevant="additions removals">
+        <div class="hero-slide active">
+          Empowering vulnerable communities with hope, dignity, and sustainable support.
+        </div>
+        <div class="hero-slide">
+          Providing education, healthcare, and advocacy for lasting change.
+        </div>
+        <div class="hero-slide">
+          Together, we transform lives and build a brighter future.
+        </div>
+      </div>
+
+      <button class="donate-btn" aria-label="Donate to Amari Amman Foundation">
+        <img src="images/donate.jpeg" alt="Donate Button" />
+      </button>
+    </div>
+
+    <div class="intro-text">
+      <p>
+        Amari Amman Foundation is a humanitarian organization dedicated to restoring dignity and hope to vulnerable communities. Our work spans health outreach, education support, food security, and advocacy. We believe that every individual, regardless of background or circumstance, deserves an opportunity to thrive. Through partnerships, volunteerism, and love in action, we empower families and transform communities. With a focus on sustainable impact, we bring compassion where it’s needed most and stand committed to long-term change.
+      </p>
+    </div>
+
+    <section class="team-section" aria-label="Management Team">
+      <h2>Our Management Team</h2>
+      <div class="team-grid">
+        <article class="team-member" tabindex="0">
+          <img src="images/reagan-profile.jpg" alt="Executive Director" />
+          <h3>Executive Director</h3>
+          <p>
+            The Executive Director oversees strategy, partnerships, and leadership. With vision and passion, they guide the Foundation toward impactful, sustainable service.
+          </p>
+        </article>
+
+        <article class="team-member" tabindex="0">
+          <img src="images/man2.webp" alt="Programs Manager" />
+          <h3>Programs Manager</h3>
+          <p>
+            Responsible for the planning and implementation of all community-based programs, ensuring measurable results and local empowerment through outreach.
+          </p>
+        </article>
+
+        <article class="team-member" tabindex="0">
+          <img src="images/man3.webp" alt="Finance Officer" />
+          <h3>Finance Officer</h3>
+          <p>
+            Manages the Foundation’s budgeting, reporting, and donor funds to ensure transparency, accountability, and proper resource allocation at every level.
+          </p>
+        </article>
+
+        <article class="team-member" tabindex="0">
+          <img src="images/man1.webp" alt="Community Coordinator" />
+          <h3>Community Coordinator</h3>
+          <p>
+            Connects our field teams to local leaders, families, and schools ensuring smooth execution of services and identifying real-time community needs.
+          </p>
+        </article>
+
+        <article class="team-member" tabindex="0">
+          <img src="images/man2.webp" alt="Communications Officer" />
+          <h3>Communications Officer</h3>
+          <p>
+            Manages all communications, public relations, and media outreach to enhance the Foundation’s visibility and community engagement.
+          </p>
+        </article>
+
+        <article class="team-member" tabindex="0">
+          <img src="images/reagan-profile.jpg" alt="Volunteer Coordinator" />
+          <h3>Volunteer Coordinator</h3>
+          <p>
+            Oversees recruitment, training, and support for volunteers, ensuring meaningful involvement and positive impact in all programs.
+          </p>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Contact: info@amariamman.org | Phone: +256 775 732 313</p>
+    <p>&copy; 2025 Amari Amman Foundation | All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Slide change for hero texts every 5 sec
+    const slides = document.querySelectorAll('.hero-slide');
+    let currentSlide = 0;
+    const slideInterval = 5000; // 5 seconds
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    setInterval(nextSlide, slideInterval);
+
+    // Header color change every 10 seconds
+    const header = document.getElementById('hero-header');
+    const colors = ['#FF5733', '#33FF57', '#3357FF', '#FF33A6', '#FFD133', '#33FFF6'];
+    let colorIndex = 0;
+
+    function changeHeaderColor() {
+      header.style.color = colors[colorIndex];
+      colorIndex = (colorIndex + 1) % colors.length;
+    }
+
+    changeHeaderColor(); // Initial color
+    setInterval(changeHeaderColor, 10000); // every 10 seconds
+  </script>
+
+</body>
+</html>

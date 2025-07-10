@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Amari Amman</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #333;
+      padding: 0.5rem 1rem;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo img {
+      height: 55px;
+      width: auto;
+      border-radius: 5px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 0;
+    }
+
+    nav ul li a {
+      display: block;
+      padding: 10px 15px;
+      color: white;
+      text-decoration: none;
+      transition: background 0.3s;
+      border-radius: 4px;
+    }
+
+    nav ul li a:hover {
+      background: #555;
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      color: #222;
+    }
+
+    /* Container to position text over hero image */
+    .hero-image-container {
+      position: relative;
+      width: 100%;
+      height: 450px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      margin-bottom: 2rem;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .hero-image-container img.hero-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .hero-image-container:hover img.hero-image {
+      transform: scale(1.03);
+    }
+
+    /* Overlay text container */
+    .hero-overlay-text {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 800px;
+      color: white;
+      text-align: center;
+      user-select: none;
+      pointer-events: none;
+      z-index: 10;
+      text-shadow: 0 0 12px rgba(0,0,0,0.85);
+    }
+
+    /* Sliding headers */
+    .hero-slide-header {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 0;
+    }
+
+    .hero-slide-header.active {
+      opacity: 1;
+      position: relative;
+    }
+
+    /* Hero text paragraph below headers */
+    .hero-text p {
+      color: white !important;
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-top: 5rem;
+      text-shadow: 0 0 10px rgba(0,0,0,0.8);
+      transition: color 0.8s ease;
+      user-select: text;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Donation Image Button */
+    .donate-button {
+      display: block;
+      margin: 2rem auto 3rem auto;
+      width: 200px;
+      height: 200px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 123, 94, 0.3);
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .donate-button img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.2s ease;
+      border-radius: 12px;
+    }
+
+    .donate-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 16px 30px rgba(0, 123, 94, 0.4);
+    }
+
+    .donate-button:active {
+      transform: scale(0.96);
+      box-shadow: 0 4px 12px rgba(0, 123, 94, 0.2);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .gallery-item {
+      background: white;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item img:hover {
+      transform: scale(1.05);
+    }
+
+    .gallery-item p {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    footer {
+      background: #333;
+      color: white;
+      padding: 1.5rem;
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.9rem;
+      user-select: none;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .hero-text p {
+        font-size: 1rem;
+        padding: 0 1rem;
+      }
+
+      .donate-button {
+        width: 150px;
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="nav-container">
+        <a href="index.html" class="logo">
+          <img src="images/logo.jpg" alt="Amari Amman Logo" />
+        </a>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Welcome to Amari Amman</h1>
+
+    <div class="hero-image-container" aria-label="Hero image with changing headers and foundation text">
+      <img src="images/soap-cutting.jpg" alt="Community Support" class="hero-image" />
+
+      <div class="hero-overlay-text" aria-live="polite" aria-atomic="true">
+        <h2 class="hero-slide-header active">Empowering Communities for a Brighter Future</h2>
+        <h2 class="hero-slide-header">Hope, Dignity, and Sustainable Support</h2>
+        <h2 class="hero-slide-header">Transforming Lives with Compassion and Action</h2>
+
+        <div class="hero-text">
+          <p>
+            Amari Amman is committed to transforming lives through love, service, and practical support. From rural outreaches to health missions and educational sponsorships, we are here to restore hope and dignity. We believe every life matters, and with compassion and action, we help communities rise above poverty, sickness, and despair. Join us as we build a future filled with opportunity and joy for all.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Donation Button with Image -->
+    <a href="donate.html" class="donate-button" title="Donate Now">
+      <img src="images/donate.jpeg" alt="Donate Now" />
+    </a>
+
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="images/food-distribution.jpg" alt="Food Distribution" />
+        <p>
+          We organize food distribution drives for families in crisis, especially in remote and underserved areas. Each package includes essentials like maize, rice, beans, and cooking oil, providing relief for those who go days without a meal. This outreach also helps us build relationships with local leaders for long-term community impact.
+        </p>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/soap-giving.jpg" alt="Soap Distribution" />
+        <p>
+          Hygiene matters. Our soap-giving campaigns distribute basic hygiene kits including soap, toothpaste, and pads to households and schools. These efforts reduce preventable diseases, improve dignity, and empower children, especially girls, to attend school confidently and consistently. It’s simple, but life-changing.
+        </p>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/school-poverty.jpg" alt="School Support" />
+        <p>
+          Through our education fund, we support school fees, supplies, and uniforms for vulnerable children. Our team follows up with teachers and guardians to ensure that learning is taking place in a safe, supportive environment. We believe education is the bridge to a better tomorrow.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Contact: info@amriamman.org | Phone: +256 775 732 313</p>
+    <p>&copy; 2025 Amari Amman | All rights reserved.</p>
+  </footer>
+
+  <script>
+    const headers = document.querySelectorAll('.hero-slide-header');
+    const heroTextParagraph = document.querySelector('.hero-text p');
+    const colors = ['#f9a825', '#4caf50', '#2196f3', '#e91e63', '#ff5722'];
+    let currentIndex = 0;
+
+    function updateSlides() {
+      headers.forEach((header, i) => {
+        header.classList.toggle('active', i === currentIndex);
+      });
+      const color = colors[currentIndex % colors.length];
+      headers[currentIndex].style.color = color;
+      heroTextParagraph.style.color = color;
+
+      headers.forEach((header, i) => {
+        if (i !== currentIndex) header.style.color = 'white';
+      });
+
+      currentIndex = (currentIndex + 1) % headers.length;
+    }
+
+    updateSlides();
+    setInterval(updateSlides, 3000);
+  </script>
+</body>
+</html>

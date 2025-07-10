@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery | Amari Amman Foundation</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #333;
+      padding: 0.5rem 1rem;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo img {
+      height: 55px;
+      border-radius: 5px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav ul li a {
+      padding: 10px 15px;
+      color: white;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    nav ul li a:hover {
+      background: #555;
+      border-radius: 4px;
+    }
+
+    .hero {
+      position: relative;
+      height: 500px;
+      overflow: hidden;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* Improve clarity and brightness */
+      filter: brightness(1.1) contrast(1.1) saturate(1.2);
+      transition: filter 0.5s ease;
+    }
+
+    .hero-description {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 2rem 3rem;
+      border-radius: 8px;
+      text-align: center;
+      animation: moveText 20s ease-in-out infinite;
+    }
+
+    .hero-description h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      animation: colorChange 30s linear infinite;
+    }
+
+    .hero-description p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    @keyframes moveText {
+      0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+      50% { transform: translate(-50%, -50%) translateY(-15px); }
+    }
+
+    @keyframes colorChange {
+      0% { color: #e63946; }
+      20% { color: #f4a261; }
+      40% { color: #2a9d8f; }
+      60% { color: #264653; }
+      80% { color: #e76f51; }
+      100% { color: #e63946; }
+    }
+
+    .intro-text {
+      max-width: 900px;
+      margin: 2rem auto 3rem;
+      font-size: 1.15rem;
+      text-align: center;
+      padding: 0 1rem;
+      color: #444;
+      font-style: italic;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      padding: 0 1rem 3rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .gallery-item {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.03);
+      box-shadow: 0 18px 32px rgba(0, 0, 0, 0.15);
+    }
+
+    .image-container {
+      position: relative;
+      overflow: hidden;
+      border-bottom: 2px solid #e63946;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .caption {
+      position: absolute;
+      bottom: 0;
+      background: rgba(230, 57, 70, 0.8);
+      color: #fff;
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-align: center;
+      font-style: italic;
+    }
+
+    .description {
+      padding: 1rem 1.25rem 0.5rem;
+      font-size: 1rem;
+      color: #444;
+      min-height: 100px;
+      font-weight: 500;
+    }
+
+    .donate-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 1rem auto 1.5rem;
+      padding: 10px 20px;
+      background: #e63946;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      cursor: pointer;
+      gap: 10px;
+      transition: background 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 4px 12px rgba(230, 57, 70, 0.4);
+      width: fit-content;
+    }
+
+    .donate-btn img {
+      height: 30px;
+      width: 30px;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .donate-btn span {
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    .donate-btn:hover {
+      background: #c92334;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(201, 35, 52, 0.6);
+    }
+
+    .donate-btn img.swell {
+      animation: swellAnim 0.3s forwards;
+    }
+
+    @keyframes swellAnim {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.5); }
+      100% { transform: scale(1); }
+    }
+
+    .gallery-description {
+      max-width: 1000px;
+      margin: 3rem auto 4rem;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.1rem;
+      color: #444;
+      font-weight: 600;
+    }
+
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="images/logo.jpg" alt="Amari Amman Foundation Logo" />
+      </a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="donate.html">Donate</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <section class="hero">
+    <img src="images/cleaning.jpg" alt="Hero image showing Foundation's mission" />
+    <div class="hero-description">
+      <h1>Gallery of Grace & Impact</h1>
+      <p>See how Amari Amman Foundation transforms lives across communities with compassion and dignity.</p>
+    </div>
+  </section>
+
+  <div class="intro-text">
+    At Amari Amman Foundation, we believe every small act of kindness ignites hope and transforms futures. Our hands reach out to those in deepest need bringing clean water, safe homes, education, and nourishment to vulnerable lives. Together, we create lasting change through love in action.
+  </div>
+
+  <div class="gallery">
+
+    <!-- Example Gallery Item -->
+    <div class="gallery-item">
+      <div class="image-container">
+        <img src="images/prison-outreach.jpg" alt="Prison Outreach" />
+        <div class="caption">Lighting paths behind bars with hope and compassion.</div>
+      </div>
+      <div class="description">
+        Our prison outreach visits inmates monthly, providing hygiene kits, mentorship, and emotional support. We restore hope and dignity, encouraging transformation and reintegration into society with faith and purpose.
+      </div>
+      <a href="donate.html" class="donate-btn" title="Donate">
+        <img src="images/donate.jpeg" alt="Donate Icon" />
+        <span>Donate</span>
+      </a>
+    </div>
+
+    <!-- Repeat the structure for each gallery item below -->
+
+    <div class="gallery-item">
+      <div class="image-container">
+        <img src="images/house_building_project_2022_p6.jpg" alt="House Building" />
+        <div class="caption">Rebuilding safe homes for vulnerable families.</div>
+      </div>
+      <div class="description">
+        Many families live in unsafe, collapsing houses. We rebuild sturdy, safe homes that restore dignity and security, offering a foundation for hope, health, and stability for generations to come.
+      </div>
+      <a href="donate.html" class="donate-btn" title="Donate">
+        <img src="images/donate.jpeg" alt="Donate Icon" />
+        <span>Donate</span>
+      </a>
+    </div>
+
+    <div class="gallery-item">
+      <div class="image-container">
+        <img src="images/soap-giving.jpg" alt="Soap Distribution" />
+        <div class="caption">Providing soap to promote hygiene and health.</div>
+      </div>
+      <div class="description">
+        Soap distribution programs improve health by teaching hygiene and preventing disease spread. We supply soap to vulnerable communities to empower families to protect themselves and stay healthy.
+      </div>
+      <a href="donate.html" class="donate-btn" title="Donate">
+        <img src="images/donate.jpeg" alt="Donate Icon" />
+        <span>Donate</span>
+      </a>
+    </div>
+
+    <div class="gallery-item">
+      <div class="image-container">
+        <img src="images/school-fees.jpeg" alt="School Fees Assistance" />
+        <div class="caption">Supporting education by paying school fees for children.</div>
+      </div>
+      <div class="description">
+        Education opens doors to a better future. We assist children from impoverished families by covering school fees, helping them stay in school and pursue their dreams.
+      </div>
+      <a href="donate.html" class="donate-btn" title="Donate">
+        <img src="images/donate.jpeg" alt="Donate Icon" />
+        <span>Donate</span>
+      </a>
+    </div>
+
+    <div class="gallery-item">
+      <div class="image-container">
+        <img src="images/dirty_drink.jpeg" alt="Drilling Clean Water Wells" />
+        <div class="caption">Turning unsafe water sources into safe wells.</div>
+      </div>
+      <div class="description">
+        Many communities depend on contaminated water that causes illness. We drill clean water wells, bringing safe drinking water that saves lives and promotes health and hygiene in forgotten areas.
+      </div>
+      <a href="donate.html" class="donate-btn" title="Donate">
+        <img src="images/donate.jpeg" alt="Donate Icon" />
+        <span>Donate</span>
+      </a>
+    </div>
+
+    <div class="gallery-item">
+      <div class="image-container">
+        <img src="images/building-house.jpg" alt="Elderly Housing Rebuild" />
+        <div class="caption">Providing safe homes for vulnerable elderly.</div>
+      </div>
+      <div class="description">
+        Elderly people often live in unsafe houses with no support. We rebuild comfortable, secure homes to restore their dignity and provide peace of mind in their later years.
+      </div>
+      <a href="donate.html" class="donate-btn" title="Donate">
+        <img src="images/donate.jpeg" alt="Donate Icon" />
+        <span>Donate</span>
+      </a>
+    </div>
+
+  </div>
+
+  <div class="gallery-description">
+    These moments showcase the mission of Amari Amman Foundation: uplifting the forgotten, sheltering the vulnerable, and inspiring change through love in action. We thank every donor and volunteer for making this impact possible.
+  </div>
+
+</main>
+
+<footer>
+  <p>Contact: info@amariamman.org | Phone: +256 775 732 313</p>
+  <p>&copy; 2025 Amari Amman Foundation | All rights reserved.</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.donate-btn img').forEach(img => {
+    img.addEventListener('click', () => {
+      img.classList.add('swell');
+      img.addEventListener('animationend', () => {
+        img.classList.remove('swell');
+      }, { once: true });
+    });
+  });
+</script>
+
+</body>
+</html>
