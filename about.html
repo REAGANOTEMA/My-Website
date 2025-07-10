@@ -88,7 +88,7 @@
     .hero-container {
       position: relative;
       width: 100%;
-      height: 100vh; /* full viewport height */
+      height: 100vh;
       overflow: hidden;
       user-select: none;
       border-radius: 0;
@@ -103,7 +103,6 @@
       color: white;
     }
 
-    /* Hero Image fills the hero container */
     .hero-image {
       position: absolute;
       top: 0; left: 0;
@@ -116,7 +115,6 @@
       filter: brightness(0.7);
     }
 
-    /* New: Hero Header */
     .hero-header {
       font-size: 3rem;
       font-weight: 700;
@@ -126,7 +124,6 @@
       transition: color 1s ease;
     }
 
-    /* Hero Text Slider Container */
     .hero-text-slider {
       position: relative;
       width: 100%;
@@ -144,7 +141,6 @@
       justify-content: center;
     }
 
-    /* Individual slides */
     .hero-slide {
       position: absolute;
       width: 100%;
@@ -159,7 +155,6 @@
       position: relative;
     }
 
-    /* Donate Button */
     .donate-btn {
       position: absolute;
       bottom: 30px;
@@ -187,7 +182,6 @@
       user-select: none;
     }
 
-    /* Intro Text */
     .intro-text {
       text-align: center;
       font-size: 1.1rem;
@@ -198,7 +192,6 @@
       z-index: 10;
     }
 
-    /* Team Section */
     .team-section {
       margin-top: 3rem;
       max-width: 1000px;
@@ -263,6 +256,72 @@
       z-index: 10;
       font-size: 0.9rem;
     }
+
+    /* ------------------- */
+    /* Responsive Media Queries */
+
+    /* Large screens (1200px and up) */
+    @media screen and (min-width: 1200px) {
+      .hero-header {
+        font-size: 4rem;
+      }
+
+      .hero-text-slider {
+        font-size: 2.5rem;
+      }
+
+      .intro-text {
+        font-size: 1.3rem;
+      }
+
+      .team-member img {
+        height: 300px;
+      }
+    }
+
+    /* Mobile screens (up to 767px) */
+    @media screen and (max-width: 767px) {
+      .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+      }
+
+      nav ul li a {
+        padding: 8px 12px;
+        width: 100%;
+      }
+
+      .hero-header {
+        font-size: 2rem;
+      }
+
+      .hero-text-slider {
+        font-size: 1.4rem;
+        min-height: 80px;
+      }
+
+      .donate-btn {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+      }
+
+      .intro-text {
+        font-size: 1rem;
+        padding: 0 10px;
+      }
+
+      .team-member img {
+        height: 200px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -291,7 +350,6 @@
     <div class="hero-container" aria-label="Hero image with foundation message and donate button">
       <img src="images/children-n-mama-melisa.jpg" alt="Amari Amman Foundation Community" class="hero-image" />
 
-      <!-- Added header inside hero -->
       <div class="hero-header" id="hero-header">
         Empowering Communities
       </div>
@@ -325,51 +383,33 @@
         <article class="team-member" tabindex="0">
           <img src="images/reagan-profile.jpg" alt="Executive Director" />
           <h3>Executive Director</h3>
-          <p>
-            The Executive Director oversees strategy, partnerships, and leadership. With vision and passion, they guide the Foundation toward impactful, sustainable service.
-          </p>
+          <p>The Executive Director oversees strategy, partnerships, and leadership. With vision and passion, they guide the Foundation toward impactful, sustainable service.</p>
         </article>
-
         <article class="team-member" tabindex="0">
           <img src="images/man2.webp" alt="Programs Manager" />
           <h3>Programs Manager</h3>
-          <p>
-            Responsible for the planning and implementation of all community-based programs, ensuring measurable results and local empowerment through outreach.
-          </p>
+          <p>Responsible for the planning and implementation of all community-based programs, ensuring measurable results and local empowerment through outreach.</p>
         </article>
-
         <article class="team-member" tabindex="0">
           <img src="images/man3.webp" alt="Finance Officer" />
           <h3>Finance Officer</h3>
-          <p>
-            Manages the Foundation’s budgeting, reporting, and donor funds to ensure transparency, accountability, and proper resource allocation at every level.
-          </p>
+          <p>Manages the Foundation’s budgeting, reporting, and donor funds to ensure transparency, accountability, and proper resource allocation at every level.</p>
         </article>
-
         <article class="team-member" tabindex="0">
           <img src="images/man1.webp" alt="Community Coordinator" />
           <h3>Community Coordinator</h3>
-          <p>
-            Connects our field teams to local leaders, families, and schools ensuring smooth execution of services and identifying real-time community needs.
-          </p>
+          <p>Connects our field teams to local leaders, families, and schools ensuring smooth execution of services and identifying real-time community needs.</p>
         </article>
-
         <article class="team-member" tabindex="0">
           <img src="images/man2.webp" alt="Communications Officer" />
           <h3>Communications Officer</h3>
-          <p>
-            Manages all communications, public relations, and media outreach to enhance the Foundation’s visibility and community engagement.
-          </p>
+          <p>Manages all communications, public relations, and media outreach to enhance the Foundation’s visibility and community engagement.</p>
         </article>
-
         <article class="team-member" tabindex="0">
           <img src="images/reagan-profile.jpg" alt="Volunteer Coordinator" />
           <h3>Volunteer Coordinator</h3>
-          <p>
-            Oversees recruitment, training, and support for volunteers, ensuring meaningful involvement and positive impact in all programs.
-          </p>
+          <p>Oversees recruitment, training, and support for volunteers, ensuring meaningful involvement and positive impact in all programs.</p>
         </article>
-
       </div>
     </section>
   </main>
@@ -380,37 +420,36 @@
   </footer>
 
   <script>
-    // Slide change for hero texts every 5 sec
-    const slides = document.querySelectorAll('.hero-slide');
-    let currentSlide = 0;
-    const slideInterval = 5000; // 5 seconds
+    document.addEventListener("DOMContentLoaded", function () {
+      const slides = document.querySelectorAll('.hero-slide');
+      let currentSlide = 0;
+      const slideInterval = 5000;
 
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-      });
-    }
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle('active', i === index);
+        });
+      }
 
-    function nextSlide() {
-      currentSlide = (currentSlide + 1) % slides.length;
-      showSlide(currentSlide);
-    }
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }
 
-    setInterval(nextSlide, slideInterval);
+      setInterval(nextSlide, slideInterval);
 
-    // Header color change every 10 seconds
-    const header = document.getElementById('hero-header');
-    const colors = ['#FF5733', '#33FF57', '#3357FF', '#FF33A6', '#FFD133', '#33FFF6'];
-    let colorIndex = 0;
+      const header = document.getElementById('hero-header');
+      const colors = ['#FF5733', '#33FF57', '#3357FF', '#FF33A6', '#FFD133', '#33FFF6'];
+      let colorIndex = 0;
 
-    function changeHeaderColor() {
-      header.style.color = colors[colorIndex];
-      colorIndex = (colorIndex + 1) % colors.length;
-    }
+      function changeHeaderColor() {
+        header.style.color = colors[colorIndex];
+        colorIndex = (colorIndex + 1) % colors.length;
+      }
 
-    changeHeaderColor(); // Initial color
-    setInterval(changeHeaderColor, 10000); // every 10 seconds
+      changeHeaderColor();
+      setInterval(changeHeaderColor, 10000);
+    });
   </script>
-
 </body>
 </html>

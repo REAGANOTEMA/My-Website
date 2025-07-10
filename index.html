@@ -72,7 +72,6 @@
       color: #222;
     }
 
-    /* Container to position text over hero image */
     .hero-image-container {
       position: relative;
       width: 100%;
@@ -98,7 +97,6 @@
       transform: scale(1.03);
     }
 
-    /* Overlay text container */
     .hero-overlay-text {
       position: absolute;
       top: 20%;
@@ -114,7 +112,6 @@
       text-shadow: 0 0 12px rgba(0,0,0,0.85);
     }
 
-    /* Sliding headers */
     .hero-slide-header {
       font-size: 2.2rem;
       font-weight: 700;
@@ -132,7 +129,6 @@
       position: relative;
     }
 
-    /* Hero text paragraph below headers */
     .hero-text p {
       color: white !important;
       font-size: 1.15rem;
@@ -145,7 +141,6 @@
       z-index: 10;
     }
 
-    /* Donation Image Button */
     .donate-button {
       display: block;
       margin: 2rem auto 3rem auto;
@@ -227,19 +222,73 @@
       user-select: none;
     }
 
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2rem;
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+      }
+
+      nav ul li {
+        width: 100%;
+      }
+
+      nav ul li a {
+        width: 100%;
+        padding: 12px;
+        border-top: 1px solid #444;
+      }
+
+      .hero-image-container {
+        height: 300px;
+      }
+
+      .hero-slide-header {
+        font-size: 1.6rem;
       }
 
       .hero-text p {
         font-size: 1rem;
+        margin-top: 4rem;
         padding: 0 1rem;
       }
 
       .donate-button {
-        width: 150px;
-        height: 150px;
+        width: 160px;
+        height: 160px;
+      }
+
+      h1 {
+        font-size: 2rem;
+        padding: 0 1rem;
+      }
+
+      main {
+        padding: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-image-container {
+        height: 250px;
+      }
+
+      .hero-slide-header {
+        font-size: 1.3rem;
+      }
+
+      .hero-text p {
+        font-size: 0.95rem;
+      }
+
+      .donate-button {
+        width: 140px;
+        height: 140px;
       }
     }
   </style>
@@ -283,7 +332,6 @@
       </div>
     </div>
 
-    <!-- Donation Button with Image -->
     <a href="donate.html" class="donate-button" title="Donate Now">
       <img src="images/donate.jpeg" alt="Donate Now" />
     </a>

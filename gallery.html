@@ -5,239 +5,234 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Gallery | Amari Amman Foundation</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
+    * { box-sizing: border-box; margin:0; padding:0; }
     body {
-      font-family: Arial, sans-serif;
-      background: #f8f9fa;
-      color: #333;
-      line-height: 1.6;
+      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background:#f8f9fa;
+      color:#333;
+      line-height:1.6;
     }
-
     header {
-      background-color: #333;
-      padding: 0.5rem 1rem;
+      background:#2c2f33;
+      padding:0.75rem 1.5rem;
+      box-shadow:0 2px 8px rgba(0,0,0,0.15);
+      position:sticky;
+      top:0;
+      z-index:10;
     }
-
     .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
+      max-width:1200px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
     }
-
     .logo img {
-      height: 55px;
-      border-radius: 5px;
+      height:55px;
+      border-radius:6px;
+      filter:drop-shadow(1px 1px 1px rgba(0,0,0,0.2));
+      transition:transform 0.3s;
     }
-
+    .logo img:hover { transform:scale(1.05); }
     nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1rem;
+      list-style:none;
+      display:flex;
+      gap:1.25rem;
+      font-weight:600;
+      font-size:1rem;
+      flex-wrap:wrap;
     }
-
     nav ul li a {
-      padding: 10px 15px;
-      color: white;
-      text-decoration: none;
-      transition: background 0.3s;
+      padding:12px 18px;
+      color:#f0f0f0;
+      text-decoration:none;
+      border-radius:5px;
+      transition:background 0.3s, color 0.3s;
     }
-
-    nav ul li a:hover {
-      background: #555;
-      border-radius: 4px;
+    nav ul li a:hover, nav ul li a:focus {
+      background:#e63946;
+      color:#fff;
     }
-
     .hero {
-      position: relative;
-      height: 500px;
-      overflow: hidden;
+      position:relative;
+      height:520px;
+      margin-bottom:3rem;
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow:0 12px 30px rgba(0,0,0,0.15);
     }
-
+    .hero::before {
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to right,rgba(0,0,0,0.5),rgba(0,0,0,0.2));
+      z-index:1;
+      border-radius:12px;
+    }
     .hero img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      /* Improve clarity and brightness */
-      filter: brightness(1.1) contrast(1.1) saturate(1.2);
-      transition: filter 0.5s ease;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:transform 8s ease;
+      border-radius:12px;
     }
-
+    .hero:hover img { transform:scale(1.05); }
     .hero-description {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(0, 0, 0, 0.5);
-      color: white;
-      padding: 2rem 3rem;
-      border-radius: 8px;
-      text-align: center;
-      animation: moveText 20s ease-in-out infinite;
+      position:absolute;
+      top:50%; left:50%;
+      transform:translate(-50%, -50%);
+      background:rgba(0,0,0,0.6);
+      color:#fff;
+      padding:2.5rem 4rem;
+      border-radius:10px;
+      text-align:center;
+      z-index:2;
+      max-width:90%;
     }
-
     .hero-description h1 {
-      font-size: 2.5rem;
-      font-weight: bold;
-      animation: colorChange 30s linear infinite;
+      font-size:3rem;
+      font-weight:900;
+      margin-bottom:0.7rem;
+      text-shadow:1px 1px 6px rgba(0,0,0,0.7);
+      transition:color 1s;
     }
-
     .hero-description p {
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
+      font-size:1.3rem;
+      font-weight:500;
+      text-shadow:1px 1px 3px rgba(0,0,0,0.5);
     }
-
-    @keyframes moveText {
-      0%, 100% { transform: translate(-50%, -50%) translateY(0); }
-      50% { transform: translate(-50%, -50%) translateY(-15px); }
-    }
-
-    @keyframes colorChange {
-      0% { color: #e63946; }
-      20% { color: #f4a261; }
-      40% { color: #2a9d8f; }
-      60% { color: #264653; }
-      80% { color: #e76f51; }
-      100% { color: #e63946; }
-    }
-
     .intro-text {
-      max-width: 900px;
-      margin: 2rem auto 3rem;
-      font-size: 1.15rem;
-      text-align: center;
-      padding: 0 1rem;
-      color: #444;
-      font-style: italic;
+      max-width:900px;
+      margin:0 auto 3rem;
+      font-size:1.2rem;
+      text-align:center;
+      padding:0 1rem;
+      color:#555;
+      font-style:italic;
+      line-height:1.6;
     }
-
     .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-      padding: 0 1rem 3rem;
-      max-width: 1200px;
-      margin: auto;
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(320px,1fr));
+      gap:2.5rem;
+      padding:0 1rem 4rem;
+      max-width:1200px;
+      margin:auto;
     }
-
     .gallery-item {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      background:#fff;
+      border-radius:14px;
+      overflow:hidden;
+      box-shadow:0 14px 32px rgba(0,0,0,0.12);
+      transition:transform 0.35s ease, box-shadow 0.35s ease;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
     }
-
     .gallery-item:hover {
-      transform: scale(1.03);
-      box-shadow: 0 18px 32px rgba(0, 0, 0, 0.15);
+      transform:translateY(-6px) scale(1.04);
+      box-shadow:0 24px 48px rgba(0,0,0,0.18);
     }
-
     .image-container {
-      position: relative;
-      overflow: hidden;
-      border-bottom: 2px solid #e63946;
+      position:relative;
+      overflow:hidden;
+      border-bottom:3px solid #e63946;
     }
-
     .gallery-item img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease;
+      width:100%;
+      height:230px;
+      object-fit:cover;
+      display:block;
+      transition:transform 0.6s;
     }
-
     .gallery-item:hover img {
-      transform: scale(1.1);
+      transform:scale(1.12) rotate(1deg);
+      filter:brightness(1.1);
     }
-
     .caption {
-      position: absolute;
-      bottom: 0;
-      background: rgba(230, 57, 70, 0.8);
-      color: #fff;
-      width: 100%;
-      padding: 10px 12px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      text-align: center;
-      font-style: italic;
+      position:absolute;
+      bottom:0;
+      background:rgba(230,57,70,0.9);
+      color:#fff;
+      width:100%;
+      padding:12px 14px;
+      text-align:center;
+      font-style:italic;
+      font-weight:600;
     }
-
     .description {
-      padding: 1rem 1.25rem 0.5rem;
-      font-size: 1rem;
-      color: #444;
-      min-height: 100px;
-      font-weight: 500;
+      padding:1.25rem 1.5rem;
+      font-size:1.05rem;
+      min-height:110px;
+      color:#444;
+      font-weight:500;
     }
-
     .donate-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin: 1rem auto 1.5rem;
-      padding: 10px 20px;
-      background: #e63946;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 1rem;
-      text-decoration: none;
-      cursor: pointer;
-      gap: 10px;
-      transition: background 0.3s ease, transform 0.3s ease;
-      box-shadow: 0 4px 12px rgba(230, 57, 70, 0.4);
-      width: fit-content;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      margin:1rem auto 1.5rem;
+      padding:12px 24px;
+      background:#e63946;
+      color:#fff;
+      border-radius:10px;
+      font-weight:700;
+      font-size:1.1rem;
+      cursor:pointer;
+      gap:12px;
+      transition:background 0.35s, transform 0.35s;
     }
-
     .donate-btn img {
-      height: 30px;
-      width: 30px;
-      object-fit: contain;
-      transition: transform 0.3s ease;
+      height:32px; width:32px;
+      transition:transform 0.3s;
     }
-
-    .donate-btn span {
-      font-size: 1rem;
-      font-weight: bold;
-    }
-
     .donate-btn:hover {
-      background: #c92334;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(201, 35, 52, 0.6);
+      background:#c92334;
+      transform:translateY(-3px);
     }
-
-    .donate-btn img.swell {
-      animation: swellAnim 0.3s forwards;
-    }
-
-    @keyframes swellAnim {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.5); }
-      100% { transform: scale(1); }
-    }
-
     .gallery-description {
-      max-width: 1000px;
-      margin: 3rem auto 4rem;
-      padding: 1rem;
-      text-align: center;
-      font-size: 1.1rem;
-      color: #444;
-      font-weight: 600;
+      max-width:1000px;
+      margin:3rem auto 5rem;
+      padding:1rem;
+      text-align:center;
+      font-size:1.15rem;
+      font-weight:600;
+      color:#444;
     }
-
     footer {
-      background: #333;
-      color: white;
-      text-align: center;
-      padding: 2rem 1rem;
+      background:#2c2f33;
+      color:#dcdcdc;
+      text-align:center;
+      padding:2.5rem 1rem;
+    }
+    @media (max-width:768px) {
+      .hero-description {
+        padding:1.5rem 2rem;
+      }
+      .hero-description h1 { font-size:2rem; }
+      .hero-description p { font-size:1rem; }
+      nav ul {
+        flex-direction:column;
+        align-items:center;
+        margin-top:10px;
+        gap:0.5rem;
+      }
+    }
+    @media (max-width:480px) {
+      .donate-btn {
+        padding:10px 16px;
+        font-size:1rem;
+      }
+      .intro-text { font-size:1rem; }
+    }
+    @keyframes swellAnim {
+      0% { transform:scale(1); }
+      50% { transform:scale(1.5); }
+      100% { transform:scale(1); }
+    }
+    .swell {
+      animation:swellAnim 0.3s forwards;
     }
   </style>
 </head>
@@ -266,18 +261,20 @@
   <section class="hero">
     <img src="images/cleaning.jpg" alt="Hero image showing Foundation's mission" />
     <div class="hero-description">
-      <h1>Gallery of Grace & Impact</h1>
+      <h1 id="hero-title">Gallery of Grace & Impact</h1>
       <p>See how Amari Amman Foundation transforms lives across communities with compassion and dignity.</p>
+      <p style="margin-top:10px; font-style:italic; font-size:1rem; color:#f9dede;">
+        Empowering hearts. Building futures. Changing lives.
+      </p>
     </div>
   </section>
 
   <div class="intro-text">
-    At Amari Amman Foundation, we believe every small act of kindness ignites hope and transforms futures. Our hands reach out to those in deepest need bringing clean water, safe homes, education, and nourishment to vulnerable lives. Together, we create lasting change through love in action.
+    At Amari Amman Foundation, we believe every small act of kindness ignites hope and transforms futures. Our hands reach out to those in deepest need—bringing clean water, safe homes, education, and nourishment to vulnerable lives. Together, we create lasting change through love in action.
   </div>
 
   <div class="gallery">
-
-    <!-- Example Gallery Item -->
+    <!-- Gallery Item 1 -->
     <div class="gallery-item">
       <div class="image-container">
         <img src="images/prison-outreach.jpg" alt="Prison Outreach" />
@@ -287,13 +284,11 @@
         Our prison outreach visits inmates monthly, providing hygiene kits, mentorship, and emotional support. We restore hope and dignity, encouraging transformation and reintegration into society with faith and purpose.
       </div>
       <a href="donate.html" class="donate-btn" title="Donate">
-        <img src="images/donate.jpeg" alt="Donate Icon" />
+        <img src="images/donate.jpeg" alt="Donate Icon" class="donate-icon"/>
         <span>Donate</span>
       </a>
     </div>
-
-    <!-- Repeat the structure for each gallery item below -->
-
+    <!-- Gallery Item 2 -->
     <div class="gallery-item">
       <div class="image-container">
         <img src="images/house_building_project_2022_p6.jpg" alt="House Building" />
@@ -303,11 +298,11 @@
         Many families live in unsafe, collapsing houses. We rebuild sturdy, safe homes that restore dignity and security, offering a foundation for hope, health, and stability for generations to come.
       </div>
       <a href="donate.html" class="donate-btn" title="Donate">
-        <img src="images/donate.jpeg" alt="Donate Icon" />
+        <img src="images/donate.jpeg" alt="Donate Icon" class="donate-icon"/>
         <span>Donate</span>
       </a>
     </div>
-
+    <!-- Gallery Item 3 -->
     <div class="gallery-item">
       <div class="image-container">
         <img src="images/soap-giving.jpg" alt="Soap Distribution" />
@@ -317,11 +312,11 @@
         Soap distribution programs improve health by teaching hygiene and preventing disease spread. We supply soap to vulnerable communities to empower families to protect themselves and stay healthy.
       </div>
       <a href="donate.html" class="donate-btn" title="Donate">
-        <img src="images/donate.jpeg" alt="Donate Icon" />
+        <img src="images/donate.jpeg" alt="Donate Icon" class="donate-icon"/>
         <span>Donate</span>
       </a>
     </div>
-
+    <!-- Gallery Item 4 -->
     <div class="gallery-item">
       <div class="image-container">
         <img src="images/school-fees.jpeg" alt="School Fees Assistance" />
@@ -331,11 +326,11 @@
         Education opens doors to a better future. We assist children from impoverished families by covering school fees, helping them stay in school and pursue their dreams.
       </div>
       <a href="donate.html" class="donate-btn" title="Donate">
-        <img src="images/donate.jpeg" alt="Donate Icon" />
+        <img src="images/donate.jpeg" alt="Donate Icon" class="donate-icon"/>
         <span>Donate</span>
       </a>
     </div>
-
+    <!-- Gallery Item 5 -->
     <div class="gallery-item">
       <div class="image-container">
         <img src="images/dirty_drink.jpeg" alt="Drilling Clean Water Wells" />
@@ -345,11 +340,11 @@
         Many communities depend on contaminated water that causes illness. We drill clean water wells, bringing safe drinking water that saves lives and promotes health and hygiene in forgotten areas.
       </div>
       <a href="donate.html" class="donate-btn" title="Donate">
-        <img src="images/donate.jpeg" alt="Donate Icon" />
+        <img src="images/donate.jpeg" alt="Donate Icon" class="donate-icon"/>
         <span>Donate</span>
       </a>
     </div>
-
+    <!-- Gallery Item 6 -->
     <div class="gallery-item">
       <div class="image-container">
         <img src="images/building-house.jpg" alt="Elderly Housing Rebuild" />
@@ -359,11 +354,10 @@
         Elderly people often live in unsafe houses with no support. We rebuild comfortable, secure homes to restore their dignity and provide peace of mind in their later years.
       </div>
       <a href="donate.html" class="donate-btn" title="Donate">
-        <img src="images/donate.jpeg" alt="Donate Icon" />
+        <img src="images/donate.jpeg" alt="Donate Icon" class="donate-icon"/>
         <span>Donate</span>
       </a>
     </div>
-
   </div>
 
   <div class="gallery-description">
@@ -378,7 +372,15 @@
 </footer>
 
 <script>
-  document.querySelectorAll('.donate-btn img').forEach(img => {
+  const title = document.getElementById('hero-title');
+  const colors = ['#f4a261','#2ec4b6','#ff6b6b','#e63946','#00b4d8','#ffe66d'];
+  let idx = 0;
+  setInterval(() => {
+    title.style.color = colors[idx];
+    idx = (idx+1) % colors.length;
+  }, 5000);
+
+  document.querySelectorAll('.donate-icon').forEach(img => {
     img.addEventListener('click', () => {
       img.classList.add('swell');
       img.addEventListener('animationend', () => {

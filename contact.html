@@ -29,6 +29,7 @@
       max-width: 1200px;
       margin: auto;
       padding: 0 1rem;
+      position: relative;
     }
 
     .logo img {
@@ -146,6 +147,7 @@
       }
     }
 
+    /* Tablet and below */
     @media (max-width: 768px) {
       main {
         flex-direction: column;
@@ -156,8 +158,48 @@
       .director-section {
         max-width: 100%;
       }
+
+      nav ul {
+        flex-direction: column;
+        background: #000;
+        width: 100%;
+        display: none;
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 15px;
+      }
+    }
+
+    /* Phone size */
+    @media (max-width: 480px) {
+      .director-section h2 {
+        font-size: 1.2rem;
+      }
+
+      .director-section p {
+        font-size: 0.95rem;
+      }
+
+      .logo img {
+        height: 50px;
+      }
     }
   </style>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('nav-links');
+      menu.classList.toggle('show');
+    }
+  </script>
 </head>
 <body>
 
@@ -167,7 +209,8 @@
       <a href="index.html" class="logo">
         <img src="images/logo.jpg" alt="Amari Amman Foundation Logo">
       </a>
-      <ul>
+      <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+      <ul id="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="gallery.html">Gallery</a></li>
